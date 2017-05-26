@@ -26,14 +26,12 @@ import requests
 from opengaze import OpenGazeTracker
 
 class Gazepoint2JSON(OpenGazeTracker):
-    def __init__(self, ip='127.0.0.1', port=4242, logfile='default.tsv', \
-		debug=False, api_user='', api_password='', api_endpoint='http://localhost:8000/api/'):
+    def __init__(self, api_user, socket, ip='127.0.0.1', port=4242, logfile='default.tsv', debug=False, ):
         OpenGazeTracker.__init__(self, ip, port, logfile, debug)
+        self._do_run = True
         self._api_user = api_user
-        self._api_endpoint = api_endpoint
-        r = requests.post(self._api_endpoint+'session/', {'username':api_user,'password':api_password})
-        print r.json()
-        self._cookies = r.cookies
+        self._socket = socket
+
     # Accepts a sample as a list of keys and returns a JSON object
     def sampleToJSON(self, sample):
         # append apiuser variable
@@ -44,24 +42,11 @@ class Gazepoint2JSON(OpenGazeTracker):
     # Overridden to convert to JSON and issue a corresponding API request
     def _log_sample(self, sample):
         json_sample = self.sampleToJSON(sample);
-        self.POSTSample(json_sample)
-        # Sample is a dictionary of key/value pairs gathered from the Gazepoint API server
-
-        # for varname in sample.keys():
-		# 	# Check if this is a logable variable.
-		# 	if varname in self._logheader:
-		# 		# Find the appropriate index in the line
-		# 		line[self._logheader.index(varname)] = sample[varname]
-		# self._logfile.write('\t'.join(line) + '\n')
-
-    # Issue POST request with given data, to the specified API
-    def POSTSample(self, json_obj):
-        if self._debug:
-            print 'Sending Request to: ' + self._api_endpoint+'eyetrackerevents/eyetrackerintegration'  + '\n'
-            # print json_obj
+        # print self._socket.channel_session['do_capture']
         try:
-            r = requests.post(self._api_endpoint+'eyetrackerevents/eyetrackerintegration', data=json_obj, cookies=self._cookies, headers={'Content-Type': 'application/json'})
-            print r.text
-            print '---------------------------------------------\n'
+            # print 'Sending to socket'
+            self._socket.reply_channel.send({'text':json_obj})
+            # print '---------------------------------------------\n'
         except Exception as e:
-            print e
+            # print e
+            self._do_run = False
