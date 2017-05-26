@@ -1,7 +1,8 @@
 ###############################################################################
-# Gazepoint2Json: coverts and time-synchronously integrates eye tracker data
-# collected from a Gazepoint GP3 with a JSON-based experimentation platform API,
-# such as the Cybertrust phishing research platform..
+# GazepointWebsockets: This project converts eye tracker data collected from a
+# Gazepoint GP3 to simple JSON and then sends collected events to an
+# experimentation platform, such as the Cybertrust phishing research platform,
+# using websockets.
 #
 # Author: Matthew L. Hale
 # Email: mlhale@unomaha.edu
@@ -21,11 +22,10 @@
 # Based on PyOpenGaze by Edwin Dalmaijer (edwin.dalmaijer@psy.ox.ac.uk)
 ###############################################################################
 import json
-import requests
 
 from opengaze import OpenGazeTracker
 
-class Gazepoint2JSON(OpenGazeTracker):
+class GazepointWebsockets(OpenGazeTracker):
     def __init__(self, api_user, socket, socketsend, ip='127.0.0.1', port=4242, logfile='default.tsv', debug=False, ):
         OpenGazeTracker.__init__(self, ip, port, logfile, debug)
         self._api_user = api_user

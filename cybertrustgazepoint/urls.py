@@ -19,10 +19,8 @@ from django.conf.urls import *
 
 #Django Rest Framework
 from rest_framework import routers
-from api import views
 from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^session', csrf_exempt(views.Session.as_view())),
 ]

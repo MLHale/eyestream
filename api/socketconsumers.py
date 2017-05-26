@@ -1,7 +1,7 @@
 import os
 import time
 import json
-from GazepointAnalysis import Gazepoint2JSON
+from GazepointAnalysis import GazepointWebsockets
 import threading
 from channels.sessions import channel_session
 from api.models import *
@@ -41,7 +41,7 @@ def ws_message(message):
     # print session.args['do_capture']
     print 'Starting Gazepoint data capture...'
 
-    tracker = Gazepoint2JSON(api_user=message_json['username'], socket=message, socketsend=message.reply_channel.send)
+    tracker = GazepointWebsockets(api_user=message_json['username'], socket=message, socketsend=message.reply_channel.send)
 
     # Calibrate the tracker.
     # tracker.calibrate()

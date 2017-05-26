@@ -1,2 +1,2 @@
-from Gazepoint2JSON import Gazepoint2JSON
+from GazepointWebsockets import GazepointWebsockets
 from opengaze import OpenGazeTracker
