@@ -37,6 +37,30 @@ daphne chat.asgi:channel_layer --port 8888
 python manage.py runworker
 ```
 
+## Starting a client-side websocket
+The Gazepoint websocket server can be invoked using a client-side web socket invoked as follows:
+
+```js
+socket = new WebSocket("ws://" + window.location.host + "/gazepoint/");
+socket.onmessage = function(e) {
+    console.log(e.data);//log received messages
+		//implement your client-side hooks here on e
+}
+socket.onopen = function() {
+		//send username to server so it can append to the generated tracker events
+		socket.send(JSON.stringify({
+  		username: 'testname'
+		}));
+}
+// Call onopen directly if socket is already open
+if (socket.readyState == WebSocket.OPEN) socket.onopen();
+```
+
+This will start the websocket server process to:
+* Start the gazepoint controller in its own thread.
+* Initiate the eye tracker logging mechanisms and infinitely loop to capture eye events
+* wait for the socket to close, at which point the loop terminates, the logger shuts down, and the gazepoint controller is killed.
+
 ## License
 Gazepoint Websockets converts eye tracker data collected from a Gazepoint GP3 to simple JSON and then sends collected events to an experimentation platform, such as the Cybertrust phishing research platform, using websockets.
 
