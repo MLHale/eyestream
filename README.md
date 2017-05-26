@@ -1,5 +1,5 @@
 # Gazepoint2Json
-This project coverts and time-synchronously integrates eye tracker data collected from a Gazepoint GP3 with a JSON-based experimentation platform API, such as the Cybertrust phishing research platform.
+This project converts eye tracker data collected from a Gazepoint GP3 to simple JSON and then sends collected events to an experimentation platform, such as the Cybertrust phishing research platform, using websockets.
 
 ## Hardware Requirements
 * Gazepoint GP3 HD (https://www.gazept.com/product-category/gp3-hd/)
@@ -10,8 +10,11 @@ This project coverts and time-synchronously integrates eye tracker data collecte
 * python pip (https://pypi.python.org/pypi/pip)
 * lxml (https://pypi.python.org/pypi/lxml/3.4.4)
 * requests (http://docs.python-requests.org/en/master/)
-* ntplib for time Synchronization (https://pypi.python.org/pypi/ntplib/) 
+* ntplib for time Synchronization (https://pypi.python.org/pypi/ntplib/)
 * PyOpenGaze (https://github.com/esdalmaijer/PyOpenGaze)
+* Django channels
+* Docker
+* Docker redis
 
 ## Installation
 ### Hardware
@@ -24,14 +27,20 @@ First install python and pip. Then:
 ```
 pip install lxml
 pip install requests
-git clone https://github.com/MLHale/Cybertrust-gaze
-cd Cybertrust-gaze
+pip install pypiwin32
+pip install channels
+pip install asgi_redis
+git clone https://github.com/MLHale/gazepoint-web-socket-backend
+cd gazepoint-web-socket-backend
+docker pull redis
 ```
 
 ## Getting Started
-Included in this project is an example script that works with the extended PyOpenGaze environment to not only log Gazepoint GP3 data locally, but also to log it to an API of your choice.
-
-The example code issues a GET POST request using the requests library every time a sample is recorded by PyOpenGaze and the Gazepoint open API.
+```bash
+docker run -it -p 6379:6379 redis
+daphne chat.asgi:channel_layer --port 8888
+python manage.py runworker
+```
 
 ## License
 Gazepoint2Json - coverts and time-synchronously integrates eye tracker data collected from a Gazepoint GP3 with a JSON-based experimentation platform API, such as the Cybertrust phishing research platform.

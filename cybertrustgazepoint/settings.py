@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'rest_framework_json_api',
-    'corsheaders'
+    'corsheaders',
+
+    #web sockets
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -127,3 +130,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Django Channels (For websocket setup)
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "api.routing.channel_routing",
+    },
+}
