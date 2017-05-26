@@ -26,11 +26,11 @@ import requests
 from opengaze import OpenGazeTracker
 
 class Gazepoint2JSON(OpenGazeTracker):
-    def __init__(self, api_user, socket, ip='127.0.0.1', port=4242, logfile='default.tsv', debug=False, ):
+    def __init__(self, api_user, socket, socketsend, ip='127.0.0.1', port=4242, logfile='default.tsv', debug=False, ):
         OpenGazeTracker.__init__(self, ip, port, logfile, debug)
-        self._do_run = True
         self._api_user = api_user
         self._socket = socket
+        self._socketsend = socketsend
 
     # Accepts a sample as a list of keys and returns a JSON object
     def sampleToJSON(self, sample):
@@ -42,11 +42,10 @@ class Gazepoint2JSON(OpenGazeTracker):
     # Overridden to convert to JSON and issue a corresponding API request
     def _log_sample(self, sample):
         json_sample = self.sampleToJSON(sample);
-        # print self._socket.channel_session['do_capture']
         try:
             # print 'Sending to socket'
-            self._socket.reply_channel.send({'text':json_obj})
+            # print json_sample
+            self._socketsend({'text':json_sample})
             # print '---------------------------------------------\n'
         except Exception as e:
-            # print e
-            self._do_run = False
+            print e
