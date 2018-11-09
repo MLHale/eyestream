@@ -62,7 +62,7 @@ This will start the websocket server process to:
 * wait for the socket to close, at which point the loop terminates, the logger shuts down, and the gazepoint controller is killed.
 
 ## License
-Gazepoint Websockets converts eye tracker data collected from a Gazepoint GP3 to simple JSON and then sends collected events to an experimentation platform, such as the Cybertrust phishing research platform, using websockets.
+Eyestream: Gazepoint Websockets converts eye tracker data collected from a Gazepoint GP3 to simple JSON and then sends collected events to an experimentation platform, such as the Cybertrust phishing research platform, using websockets.
 
 Copyright (C) 2017 Dr. Matthew L. Hale, unless otherwise indicated.
 
