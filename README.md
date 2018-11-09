@@ -1,4 +1,4 @@
-# Gazepoint Websockets
+# Eyestream: Gazepoint Websockets
 This project converts eye tracker data collected from a Gazepoint GP3 to simple JSON and then sends collected events to an experimentation platform, such as the Cybertrust phishing research platform, using websockets.
 
 ## Hardware Requirements
