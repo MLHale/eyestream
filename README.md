@@ -25,7 +25,7 @@ First install python, pip. and docker. Then:
 pip install pypiwin32
 pip install channels
 pip install asgi_redis
-git clone https://github.com/MLHale/gazepoint-websockets
+git clone https://github.com/MLHale/eyestream
 cd gazepoint-web-socket-backend
 docker pull redis
 ```
