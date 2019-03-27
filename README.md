@@ -26,15 +26,15 @@ pip install pypiwin32
 pip install channels
 pip install asgi_redis
 git clone https://github.com/MLHale/eyestream
-cd gazepoint-web-socket-backend
+cd GazepointAnalysis
 docker pull redis
 ```
 
 ## Getting Started
-```bash
-docker run -it -p 6379:6379 redis
-daphne chat.asgi:channel_layer --port 8888
-python manage.py runworker
+```bash 
+cd ..
+cd scripts
+start startserver.bat
 ```
 
 ## Starting a client-side websocket
