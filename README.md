@@ -40,15 +40,15 @@ The Gazepoint websocket server can be invoked using a client-side web socket inv
 
 ```js
 socket = new WebSocket("ws://" + window.location.host + "/gazepoint/");
-socket.onmessage = function(e) {
-    console.log(e.data);//log received messages
-		//implement your client-side hooks here on e
+socket.onmessage = function(event) {
+    console.log(event.data);//log received messages
+    //implement your client-side hooks here on event
 }
 socket.onopen = function() {
-		//send username to server so it can append to the generated tracker events
-		socket.send(JSON.stringify({
-  		username: 'testname'
-		}));
+    //send username to server so it can append it to the generated tracker events
+    socket.send(JSON.stringify({
+  	username: 'testname'
+    }));
 }
 // Call onopen directly if socket is already open
 if (socket.readyState == WebSocket.OPEN) socket.onopen();
