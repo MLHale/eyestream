@@ -26,14 +26,12 @@ pip install pypiwin32
 pip install channels
 pip install asgi_redis
 git clone https://github.com/MLHale/eyestream
-cd GazepointAnalysis
 docker pull redis
 ```
 
 ## Getting Started
 ```bash 
-cd ..
-cd scripts
+cd <path-to-eyestream>/scripts
 start startserver.bat
 ```
 
@@ -62,7 +60,7 @@ This will start the websocket server process to:
 * wait for the socket to close, at which point the loop terminates, the logger shuts down, and the gazepoint controller is killed.
 
 ## License
-Eyestream: Gazepoint Websockets converts eye tracker data collected from a Gazepoint GP3 to simple JSON and then sends collected events to an experimentation platform, such as the Cybertrust phishing research platform, using websockets.
+Eyestream: Converts and serializes eye tracker data collected from a Gazepoint GP3 into a simple JSON format before streaming it to an application of choice at frequencies of up to 150hz. Eyestreams works for a variety of real-time eye tracker needs such as eye-driven UI, experimentation platforms, or medical apps.
 
 Copyright (C) 2017 Dr. Matthew L. Hale, unless otherwise indicated.
 
