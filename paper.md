@@ -55,6 +55,6 @@ Eyestream is licensed under the GNU General Public License and can be found on t
 
 # Acknowledgements
 
-We acknowledge contributions by Gabi Wethor ([gewethor on GitHub](https://github.com/gewethor)) for her work in testing the Cybertrust platform.
+We acknowledge contributions by Gabi Wethor ([gewethor on GitHub](https://github.com/gewethor)) for her work in testing the installation and usage instructions.
 
 # References
