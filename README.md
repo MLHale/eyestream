@@ -5,6 +5,8 @@ This project converts eye tracker data collected from a Gazepoint GP3 to simple 
 * Gazepoint GP3 HD (https://www.gazept.com/product-category/gp3-hd/)
 * Gazepoint Control v3.5.0 +
 
+> Please note that due to the GP3 drivers and hardware APIs only supporting Windows, Eyestream only works on Windows. Eyestream was tested on Windows 10 enterprise edition (July 2018), but should work on any version of Windows 8 or above.
+
 ## Software Requirements
 * Python 2, >= 2.7.9 See: https://www.python.org/downloads
 * python pip (https://pypi.python.org/pypi/pip)
@@ -12,6 +14,8 @@ This project converts eye tracker data collected from a Gazepoint GP3 to simple 
 * PyOpenGaze (https://github.com/esdalmaijer/PyOpenGaze)
 * Django channels (https://github.com/django/channels)
 * Docker (https://www.docker.com)
+
+> Please note that Eyestream is written for Python 2 and has not tested for Python 3.
 
 ## Installation
 ### Hardware
