@@ -15,7 +15,7 @@ This project converts eye tracker data collected from a Gazepoint GP3 to simple 
 * Django channels (https://github.com/django/channels)
 * Docker (https://www.docker.com)
 
-> Please note that Eyestream is written for Python 2 and has not tested for Python 3.
+> Please note that Eyestream is written for Python 2 and has not been tested for Python 3.
 
 ## Installation
 ### Hardware
