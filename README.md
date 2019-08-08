@@ -8,11 +8,11 @@ This project converts eye tracker data collected from a Gazepoint GP3 to simple 
 > Please note that due to the GP3 drivers and hardware APIs only supporting Windows, Eyestream only works on Windows. Eyestream was tested on Windows 10 enterprise edition (July 2018), but should work on any version of Windows 8 or above.
 
 ## Software Requirements
-* Python 2, >= 2.7.9 See: https://www.python.org/downloads
+* Python 2, we suggest the python 2 LTS See: https://www.python.org/downloads
 * python pip (https://pypi.python.org/pypi/pip)
 <!-- * ntplib for time Synchronization (https://pypi.python.org/pypi/ntplib/) -->
 * PyOpenGaze (https://github.com/esdalmaijer/PyOpenGaze)
-* Django channels (https://github.com/django/channels)
+* Django channels (https://github.com/django/channels), latest LTS 1.x.x version)
 * Docker (https://www.docker.com)
 
 > Please note that Eyestream is written for Python 2 and has not been tested for Python 3.
@@ -23,11 +23,15 @@ Follow the GP3 setup guide, connecting the data USB port to a USB3 port.
 Install the Gazepoint remote and control server using the Gasepoint Installer located here (https://www.gazept.com/downloads/), using valid access credentials provided with purchase of the GP3.
 
 ### Software
-First install python, pip. and docker. Then:
+First install python, pip. and docker. 
+
+> Note windows 10 pro, enterprise, and education users should use [docker desktop](https://docs.docker.com/docker-for-windows/install/), Windows 10 home users must install docker using [docker toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/). As part of the docker toolbox setup, you may also need to forward port 80 from the container to the host. To do so, open virtual box, click settings, click network, click advanced, click port forwarding, and then forward port 80 from guest to host, using 127.0.0.1 as the host ip.
+
+Then:
 
 ```
 pip install pypiwin32
-pip install channels
+pip install channels==1.1.8
 pip install asgi_redis
 git clone https://github.com/MLHale/eyestream
 docker pull redis
