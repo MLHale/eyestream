@@ -25,7 +25,7 @@ Install the Gazepoint remote and control server using the Gasepoint Installer lo
 ### Software
 First install python, pip. and docker. 
 
-> Note windows 10 pro, enterprise, and education users should use [docker desktop](https://docs.docker.com/docker-for-windows/install/), Windows 10 home users must install docker using [docker toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/). As part of the docker toolbox setup, you may also need to forward port 80 from the container to the host. To do so, open virtual box, click settings, click network, click advanced, click port forwarding, and then forward port 80 from guest to host, using 127.0.0.1 as the host ip.
+> Note windows 10 pro, enterprise, and education users should use [docker desktop](https://docs.docker.com/docker-for-windows/install/), Windows 10 home users must install docker using [docker toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/). As part of the docker toolbox setup, you may also need to forward port 80 from the container to the host. To do so, open virtual box, click settings, click network, click advanced, click port forwarding, and then forward port 6379 from guest to host, using 127.0.0.1 as the host ip.
 
 Then:
 
