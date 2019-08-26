@@ -75,7 +75,7 @@ if (socket.readyState == WebSocket.OPEN) socket.onopen();
 * Initiate the eye tracker logging mechanisms and infinitely loop to capture eye events
 * wait for the socket to close, at which point the loop terminates, the logger shuts down, and the gazepoint controller is killed.
 
-### Server streams data captured by the hardwware to open websocket clients
+### Server streams data captured by the hardware to open websocket clients
 #### Running the test: inspect an open websocket using the prior onmessage function
 Using a browser opened in the same session as the websocket client launching code from the prior test, open the developer console tab. Develop Console in chrome can be launched via the Ctrl+Shift+J hotkey (on Windows).
 
