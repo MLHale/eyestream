@@ -43,9 +43,16 @@ cd <path-to-eyestream>/scripts
 start startserver.bat
 ```
 
-## Starting a client-side websocket
-The Gazepoint websocket server can be invoked using a client-side web socket invoked as follows:
+This will start the websocket server to make it listen for incoming websocket creation requests.
+:
 
+
+## Basic Manual Testing
+
+
+### Server starts when called upon to do so via websocket open message. 
+#### Running the test: Starting a client-side websocket
+The Gazepoint websocket server can be invoked using a client-side web socket invoked as follows:
 ```js
 socket = new WebSocket("ws://" + window.location.host + "/gazepoint/");
 socket.onmessage = function(event) {
@@ -61,11 +68,32 @@ socket.onopen = function() {
 // Call onopen directly if socket is already open
 if (socket.readyState == WebSocket.OPEN) socket.onopen();
 ```
-
-This will start the websocket server process to:
+#### Expected outcomes
+- Server process launchs the gazepoint hardware controller
+- Server turns on the gazepoint device and beginning to stream captured eye data to the websocket which instantiated the channel.
 * Start the gazepoint controller in its own thread.
 * Initiate the eye tracker logging mechanisms and infinitely loop to capture eye events
 * wait for the socket to close, at which point the loop terminates, the logger shuts down, and the gazepoint controller is killed.
+
+### Server streams data captured by the hardwware to open websocket clients
+#### Running the test: inspect an open websocket using the prior onmessage function
+Using a browser opened in the same session as the websocket client launching code from the prior test, open the developer console tab. Develop Console in chrome can be launched via the Ctrl+Shift+J hotkey (on Windows).
+
+#### Expected outcomes
+- server streams data captured by the hardware to the websocket client as long as the websocket is open
+- valid hardware events will contain eyetracker telemetry information
+
+
+### server ends a session when called upon to do so via a websocket close event or if the websocket times out.
+#### Running the test: send end event
+To end the websocket and terminate, from the same browser opened to the developer console, invoke the following code:
+```js
+socket.close()
+```
+
+#### Expected outcomes
+- Data collection terminates
+- Websocket handling process gracefully shuts down the eye tracker hardware and controller, join the threads supporting the data capture process, and end server processing related to the websocket.
 
 ## License
 Eyestream: Converts and serializes eye tracker data collected from a Gazepoint GP3 into a simple JSON format before streaming it to an application of choice at frequencies of up to 150hz. Eyestreams works for a variety of real-time eye tracker needs such as eye-driven UI, experimentation platforms, or medical apps.
