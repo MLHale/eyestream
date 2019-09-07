@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.conf.urls import *
 
 #Django Rest Framework
-from rest_framework import routers
 from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [

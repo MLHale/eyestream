@@ -23,7 +23,7 @@ Follow the GP3 setup guide, connecting the data USB port to a USB3 port.
 Install the Gazepoint remote and control server using the Gasepoint Installer located here (https://www.gazept.com/downloads/), using valid access credentials provided with purchase of the GP3.
 
 ### Software
-First install python, pip. and docker. 
+First install python, pip. and docker.
 
 > Note windows 10 pro, enterprise, and education users should use [docker desktop](https://docs.docker.com/docker-for-windows/install/), Windows 10 home users must install docker using [docker toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/). As part of the docker toolbox setup, you may also need to forward port 80 from the container to the host. To do so, open virtual box, click settings, click network, click advanced, click port forwarding, and then forward port 6379 from guest to host, using 127.0.0.1 as the host ip.
 
@@ -31,6 +31,8 @@ Then:
 
 ```
 pip install django-picklefield
+pip install django-cors-headers
+pip install lxml
 pip install pypiwin32
 pip install channels==1.1.8
 pip install asgi_redis
@@ -39,7 +41,7 @@ docker pull redis
 ```
 
 ## Getting Started
-```bash 
+```bash
 cd <path-to-eyestream>/scripts
 start startserver.bat
 ```
@@ -51,7 +53,7 @@ This will start the websocket server to make it listen for incoming websocket cr
 ## Basic Manual Testing
 
 
-### Server starts when called upon to do so via websocket open message. 
+### Server starts when called upon to do so via websocket open message.
 #### Running the test: Starting a client-side websocket
 The Gazepoint websocket server can be invoked using a client-side web socket invoked as follows:
 ```js
