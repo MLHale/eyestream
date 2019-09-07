@@ -30,6 +30,7 @@ First install python, pip. and docker.
 Then:
 
 ```
+pip install django-picklefield
 pip install pypiwin32
 pip install channels==1.1.8
 pip install asgi_redis
