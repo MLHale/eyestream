@@ -25,7 +25,7 @@ Install the Gazepoint remote and control server using the Gasepoint Installer lo
 ### Software
 First install python, pip. and docker.
 
-> Note windows 10 pro, enterprise, and education users should use [docker desktop](https://docs.docker.com/docker-for-windows/install/), Windows 10 home users must install docker using [docker toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/). As part of the docker toolbox setup, you may also need to forward port 80 from the container to the host. To do so, open virtual box, click settings, click network, click advanced, click port forwarding, and then forward port 6379 from guest to host, using 127.0.0.1 as the host ip.
+> Note windows 10 pro, enterprise, and education users should use [docker desktop](https://docs.docker.com/docker-for-windows/install/), Windows 10 home users must install docker using [docker toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/). As part of the docker toolbox setup, you may also need to forward port 80 from the container to the host. To do so, open virtual box, click settings, click network, click advanced, click port forwarding, and then forward port 6379 from guest to host, using 127.0.0.1 as the host ip and leaving the guest host ip box empty.
 
 Then:
 
@@ -41,13 +41,14 @@ docker pull redis
 ```
 
 ## Getting Started
+To start the webserver, run the startserver.bat script as follows by navigating the eyestream scripts folder. 
 ```bash
 cd <path-to-eyestream>/scripts
 start startserver.bat
 ```
+> Windows home edition users making use of docker toolbox need to ensure that this command is run from the docker toolbox console. 
 
 This will start the websocket server to make it listen for incoming websocket creation requests.
-:
 
 
 ## Basic Manual Testing
@@ -71,6 +72,7 @@ socket.onopen = function() {
 // Call onopen directly if socket is already open
 if (socket.readyState == WebSocket.OPEN) socket.onopen();
 ```
+
 #### Expected outcomes
 - Server process launchs the gazepoint hardware controller
 - Server turns on the gazepoint device and beginning to stream captured eye data to the websocket which instantiated the channel.
