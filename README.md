@@ -56,7 +56,7 @@ This will start the websocket server to make it listen for incoming websocket cr
 
 ### Server starts when called upon to do so via websocket open message.
 #### Running the test: Starting a client-side websocket
-The Gazepoint websocket server can be invoked using a client-side web socket invoked as follows. This invocation assumes that you are running the following code from a console opened on an existing web app where gazepoint is running on the same domain. As an example, you are running a webserver which responds to http request at myapp.com AND running the gazepoint collection on the same domain using the WS (websocket) protocol on the same ports. In this case, http/https traffic will go to your web app and ws protocol traffic will go to eyestream, hence - ```window.location.host``` below will resolve to ```myapp.com``` and eyestream will be accessible at ```ws://myapp.com/gazepoint/```.
+The Gazepoint websocket server can be invoked using a client-side web socket invoked as follows. This invocation assumes that you are running the following code from a console or javascript file opened on an existing web app where gazepoint is running on the same domain. As an example, assume you are running a webserver which responds to http request at myapp.com AND running the gazepoint collection on the same domain using the WS (websocket) protocol on the same ports. In this case, http/https traffic will go to your web app and ws protocol traffic will go to eyestream, hence - ```window.location.host``` below will resolve to ```myapp.com``` and eyestream will be accessible at ```ws://myapp.com/gazepoint/```.
 
 ```js
 socket = new WebSocket("ws://" + window.location.host + "/gazepoint/");
