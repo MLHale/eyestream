@@ -74,7 +74,7 @@ socket.onopen = function() {
 if (socket.readyState == WebSocket.OPEN) socket.onopen();
 ```
 
-> Users running eyestream alone should replace ```window.location.host``` with the IP of the machine running gazepoint or ```localhost``` if running locally.
+> Users running eyestream alone should replace ```window.location.host``` with the IP/port of the machine running gazepoint or ```localhost:8888``` if running locally.
 
 #### Expected outcomes
 - Server process launchs the gazepoint hardware controller
